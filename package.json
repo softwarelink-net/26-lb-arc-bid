@@ -1,0 +1,37 @@
+{
+  "name": "26-lb-arc-bid",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "vue-tsc -b --pretty false",
+    "postinstall": "node -e \"import('node:fs').then(fs=>{fs.copyFileSync('node_modules/sql.js/dist/sql-wasm.wasm','public/sql-wasm.wasm');fs.copyFileSync('node_modules/sql.js/dist/sql-wasm-browser.wasm','public/sql-wasm-browser.wasm')})\"",
+    "upload:r2": "node scripts/deploy-allworld.mjs 26-lb-arc-bid",
+    "deploy": "npm run build && node scripts/deploy-allworld.mjs 26-lb-arc-bid"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "pinia": "^4.0.3",
+    "sql.js": "^1.14.2",
+    "vue": "^3.5.41",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.3",
+    "@types/sql.js": "^1.4.11",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2",
+    "vue-tsc": "^3.3.11",
+    "wrangler": "^3.114.17"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
